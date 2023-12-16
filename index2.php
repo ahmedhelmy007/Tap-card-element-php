@@ -37,33 +37,11 @@
 
     </head>
     <body>
-        <div id="centralloader"></div>
-        <div class="wrapper">
-            <nav id="sidebar" class="mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
-
-
-                        <!-- <ul class="list-unstyled CTAs">
-                            <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                            <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
-                        </ul> -->
-                    </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 24px; top: 0px; display: block; max-height: 116px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></nav>    <div id="content">
-
 
                 <script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
-                <style type="text/css">
-                    #card-element{
-                        height: auto;
-                    }
-                    #content{ width: 100%; }
-                    #sidebarhead,#sidebar,.navbar{display: none;}
-                    body{       background: inherit;}
-                </style>
-
-
                 <br>
 <div>correct test card: 4508 7500 1574 1019</div>
 <div>wrong test card: 4000 0000 0000 0002</div>
-                <div id="tab-1" class="tab-content current" style="overflow: hidden;">
                     <form id="form-container" method="post" action="charge2.php">
                         <!-- Tap element will be here -->
                         <div id="element-container"></div>
@@ -74,7 +52,6 @@
                         <!-- Tap pay button -->
                         <button id="tap-btn">Submit</button>
                     </form>
-                </div>
 
                 <script>
                     //pass your public key from tap's dashboard
@@ -174,30 +151,6 @@
 })(jQuery);
                 </script>
 
-            </div>
-
-            <script type="text/javascript">
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $(document).ready(function () {
-                    $("#sidebar").mCustomScrollbar({
-                        theme: "minimal"
-                    });
-
-                    $('#sidebarCollapse').on('click', function () {
-                        $('#sidebar, #content, #sidebarhead').toggleClass('active');
-                        $('.collapse.in').toggleClass('in');
-                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                    });
-                });
-                $(window).load(function () {
-                    $('#centralloader').fadeOut();
-                });
-            </script>
-        </div>
+        
     </body>
 </html>
