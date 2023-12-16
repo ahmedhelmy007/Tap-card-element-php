@@ -3,6 +3,7 @@
         <title>TAP Card Element</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://jselements.tap.company/tapdocumentation/public/js/jquery.min.js"></script>
         <style>
             .form-row {
                 width: 70%;
@@ -179,9 +180,14 @@
         });
 
 
+(function ($) {
         // Handle form submission
         var form = document.getElementById('form-container');
+        //using jQuery event with the form avoided the following error when appending to the form while form submission: Unhandled rejection tapTokenHandler
+/*
         form.addEventListener('submit', function (event) {
+*/
+        $('#form-container').on('submit', function (event) {
             event.preventDefault();
 
             tap.createToken(card).then(function (result) {
@@ -196,28 +202,37 @@
                     errorElement.style.display = "block";
                     var tokenElement = document.getElementById('token');
                     tokenElement.textContent = result.id;
-                    tapTokenHandler(token)
+                    tapTokenHandler(result, event) //wrong parameter passed, should be 'result' not 'token' . also need to pass 'event'
 
                 }
             });
         });
 
 
-        function tapTokenHandler(token) {
+        function tapTokenHandler(token, event) {
             // Insert the token ID into the form so it gets submitted to the server
             var form = document.getElementById('payment-form');
             var hiddenInput = document.createElement('input');
             hiddenInput.setAttribute('type', 'hidden');
             hiddenInput.setAttribute('name', 'tapToken');
             hiddenInput.setAttribute('value', token.id);
+            //using jQuery to append to the form while form submission avoided the following error: Unhandled rejection tapTokenHandler
+/*
             form.appendChild(hiddenInput);
+*/
+            $('#form-container').append(hiddenInput);
 
+            //also normal JS form submission throws the error: Unhandled rejection tapTokenHandler
             // Submit the form
+/*
             form.submit();
+*/
+            event.currentTarget.submit(); //resume form submission
         }
+})(jQuery);
 
-
-        card.addEventListener('change', function (event) {
+//the code causes JS error: Uncaught TypeError: displayError is null
+/*        card.addEventListener('change', function (event) {
             if (event.BIN) {
                 console.log(event.BIN)
             }
@@ -227,7 +242,7 @@
             } else {
                 displayError.textContent = '';
             }
-        });
+        });*/
 
     </script>
     </body>
