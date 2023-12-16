@@ -52,9 +52,9 @@
                             <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
                         </ul> -->
                     </div></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 24px; top: 0px; display: block; max-height: 116px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div><div class="mCSB_draggerRail"></div></div></div></nav>    <div id="content">
-                
-                        
-                        <script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
+
+
+                <script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
                 <style type="text/css">
                     #card-element{
                         height: auto;
@@ -70,7 +70,7 @@
                 <div id="tab-1" class="tab-content current" style="overflow: hidden;">
                     <form id="form-container" method="post" action="charge.php">
                         <!-- Tap element will be here -->
-                        <div id="element-container"></div>  
+                        <div id="element-container"></div>
                         <div id="error-handler" role="alert"></div>
                         <div id="success" style=" display: none;;position: relative;float: left;">
                             Success! Your token is <span id="token"></span>
@@ -135,13 +135,24 @@
                         }
                     });
 
+//window.addEventListener("unhandledrejection", (event) => {
+//  console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+//});
+//
+//window.onunhandledrejection = (event) => {
+//  console.warn(`UNHANDLED PROMISE REJECTION: ${event.reason}`);
+//};
+//
+//onunhandledrejection = (event) => {};
+
+(function ($) {
                     // Handle form submission
                     var form = document.getElementById('form-container');
-                    form.addEventListener('submit', function (event) {
+                    $('#form-container').on('submit', function (event) {
                         event.preventDefault();
 
                         tap.createToken(card).then(function (result) {
-                            //console.log(result);
+                            console.log(result);
                             if (result.error) {
                                 // Inform the user if there was an error
                                 var errorElement = document.getElementById('error-handler');
@@ -152,27 +163,20 @@
                                 errorElement.style.display = "block";
                                 var tokenElement = document.getElementById('token');
                                 tokenElement.textContent = result.id;
-                                //console.log(result);
-                                //console.log(result.id);
-                                tapTokenHandler(result.id);
+                                tapTokenHandler(result.id, event);
+
                             }
                         });
                     });
-                    
-                    
-                    function tapTokenHandler(token) {
-                        // Insert the token ID into the form so it gets submitted to the server
-                        var form = document.getElementById('payment-form');
-                        var hiddenInput = document.createElement('input');
-                        hiddenInput.setAttribute('type', 'hidden');
-                        hiddenInput.setAttribute('name', 'tapToken');
-                        hiddenInput.setAttribute('value', token.id);
-                        form.appendChild(hiddenInput);
 
-                        // Submit the form
-                        form.submit();
-                      }
+                    function tapTokenHandler(token_id, event) {
+                        console.log(token_id);
+                        alert('ssss');
+                        $('#form-container').append('<input type="text" name="tapToken" id="tapToken" value="' + token_id + '">');
+                        event.currentTarget.submit();
+                    }
 
+})(jQuery);
                 </script>
 
             </div>
