@@ -124,7 +124,6 @@
             <!-- Tap pay button -->
             <button id="tap-btn">Submit</button>
         </form>
-    </body>
 
     <script>
         //pass your public key from tap's dashboard
@@ -231,5 +230,6 @@
         });
 
     </script>
+    </body>
 
 </html>
