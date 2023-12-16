@@ -114,7 +114,7 @@
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
         <script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
-        <form id="form-container" method="post" action="/charge.php">
+        <form id="form-container" method="post" action="charge.php">
             <!-- Tap element will be here -->
             <div id="element-container"></div>
             <div id="error-handler" role="alert"></div>
