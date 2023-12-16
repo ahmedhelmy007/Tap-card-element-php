@@ -66,7 +66,7 @@
 
 
                 <br>
-
+4508 7500 1574 1019
                 <div id="tab-1" class="tab-content current" style="overflow: hidden;">
                     <form id="form-container" method="post" action="charge.php">
                         <!-- Tap element will be here -->
@@ -171,7 +171,6 @@
 
                     function tapTokenHandler(token_id, event) {
                         console.log(token_id);
-                        alert('ssss');
                         $('#form-container').append('<input type="text" name="tapToken" id="tapToken" value="' + token_id + '">');
                         event.currentTarget.submit();
                     }
