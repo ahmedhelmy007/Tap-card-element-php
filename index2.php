@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>TAP JS library v2 - TAP documentation</title>
+        <title>TAP Card Element</title>
         <meta name="viewport" content="width=device-width">
         <meta name="csrf-token" content="rV65qY6xRZ7MnKcq9ZQun7YMx0xnwcpZGCfB2R4l" />
         <!-- custom css -->
@@ -39,11 +39,6 @@
     <body>
         <div id="centralloader"></div>
         <div class="wrapper">
-            <nav id="sidebarhead">
-                <div class="sidebar-header">
-                    <h3>Tap&nbsp;Documentation</h3>
-                </div>
-            </nav>
             <nav id="sidebar" class="mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;"><div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
 
 
@@ -66,7 +61,8 @@
 
 
                 <br>
-4508 7500 1574 1019
+<div>correct test card: 4508 7500 1574 1019</div>
+<div>wrong test card: 4000 0000 0000 0002</div>
                 <div id="tab-1" class="tab-content current" style="overflow: hidden;">
                     <form id="form-container" method="post" action="charge.php">
                         <!-- Tap element will be here -->

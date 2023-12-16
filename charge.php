@@ -8,10 +8,7 @@ error_reporting(E_ALL ^ E_NOTICE);
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-print_r($_POST);
-
-
+ob_start(); print_r($_POST);echo '<br><br><pre>';
 
 //require_once('vendor/autoload.php');
 //$client = new \GuzzleHttp\Client();
@@ -131,13 +128,31 @@ $bodyJSON='{
 //            CURLOPT_POSTFIELDS => json_encode($body, true),
             CURLOPT_POSTFIELDS => $bodyJSON,
             CURLOPT_HTTPHEADER => [
-                'Authorization' => 'Bearer sk_test_XKokBfNWv6FIYuTMg5sLPjhJ',
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
+                'Authorization: Bearer sk_test_XKokBfNWv6FIYuTMg5sLPjhJ',
+                'Accept: application/json',
+                'Content-Type: application/json',
               ],
         ));
         
-        $response = curl_exec($curl);
-        var_dump(json_decode($response, true));
-        echo "<br> response=". var_dump($response);
+        /**
+         * @todo TO BE REMOVED
+         */
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, False);
+
+        
+        $responseJSON = curl_exec($curl);
+        $response = json_decode($responseJSON, true);
+        var_dump($response);
+        
+        if (curl_errno($curl)) {
+            echo 'Curl error: ' . curl_error($curl);
+        }else{
+            ob_end_clean();            
+            if($response['status']== 'CAPTURED' || in_array($response['response']['code'], ['000', '001', '002']) ){
+                header("Location: success.php");
+            }else{
+                header("Location: failed.php?rspmsg=". $response['response']['message']. "&acqmsg=". $response['acquirer']['response']['message']);
+            }
+        }
+        
         curl_close($curl);
