@@ -64,7 +64,7 @@
 <div>correct test card: 4508 7500 1574 1019</div>
 <div>wrong test card: 4000 0000 0000 0002</div>
                 <div id="tab-1" class="tab-content current" style="overflow: hidden;">
-                    <form id="form-container" method="post" action="charge.php">
+                    <form id="form-container" method="post" action="charge2.php">
                         <!-- Tap element will be here -->
                         <div id="element-container"></div>
                         <div id="error-handler" role="alert"></div>
