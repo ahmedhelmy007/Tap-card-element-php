@@ -1,133 +1,235 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]--><head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>TAP JS library v2 - TAP documentation</title>
-	<meta name="viewport" content="width=device-width">
-    <meta name="csrf-token" content="rV65qY6xRZ7MnKcq9ZQun7YMx0xnwcpZGCfB2R4l" />
-    <!-- custom css -->
-	<link rel="stylesheet" type="text/css" href="https://jselements.tap.company/tapdocumentation/public/css/jquery.fullpage.css" />
-<link rel="stylesheet" href="https://jselements.tap.company/tapdocumentation/public/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://jselements.tap.company/tapdocumentation/public/css/style2.css">
+<html class="no-js">
+    <head>
+        <title>TAP Card Element</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .form-row {
+                width: 70%;
+                float: left;
+                background-color: #ededed;
+            }
+            #card-element {
+                background-color: transparent;
+                height: 40px;
+                border-radius: 4px;
+                border: 1px solid transparent;
+                box-shadow: 0 1px 3px 0 #e6ebf1;
+                -webkit-transition: box-shadow 150ms ease;
+                transition: box-shadow 150ms ease;
+            }
 
-<link rel="stylesheet" href="https://jselements.tap.company/tapdocumentation/public/css/jquery.mCustomScrollbar.min.css">
-<link rel="stylesheet" href="https://jselements.tap.company/tapdocumentation/public/css/custom.css">
-<link rel="stylesheet" href="https://jselements.tap.company/tapdocumentation/public/css/prism.css">
-<script src="https://jselements.tap.company/tapdocumentation/public/js/jquery.min.js"></script>
+            #card-element--focus {
+                box-shadow: 0 1px 3px 0 #cfd7df;
+            }
 
-<!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
-<script src="https://jselements.tap.company/tapdocumentation/public/js/jquery.min.js"></script>
-<script src="https://jselements.tap.company/tapdocumentation/public/js/jquery.easings.min.js"></script>
+            #card-element--invalid {
+                border-color: #fa755a;
+            }
 
-<script src="https://jselements.tap.company/tapdocumentation/public/js/bootstrap.min.js"></script>
-<script src="https://jselements.tap.company/tapdocumentation/public/js/prism.js"></script>
-<script src="https://jselements.tap.company/tapdocumentation/public/js/custom.js"></script>
+            #card-element--webkit-autofill {
+                background-color: #fefde5 !important;
+            }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
+            #submitbutton,#tap-btn{
+                align-items:flex-start;
+                background-attachment:scroll;background-clip:border-box;
+                background-color:rgb(50, 50, 93);background-image:none;
+                background-origin:padding-box;
+                background-position-x:0%;
+                background-position-y:0%;
+                background-size:auto;
+                border-bottom-color:rgb(255, 255, 255);
+                border-bottom-left-radius:4px;
+                border-bottom-right-radius:4px;border-bottom-style:none;
+                border-bottom-width:0px;border-image-outset:0px;
+                border-image-repeat:stretch;border-image-slice:100%;
+                border-image-source:none;border-image-width:1;
+                border-left-color:rgb(255, 255, 255);
+                border-left-style:none;
+                border-left-width:0px;
+                border-right-color:rgb(255, 255, 255);
+                border-right-style:none;
+                border-right-width:0px;
+                border-top-color:rgb(255, 255, 255);
+                border-top-left-radius:4px;
+                border-top-right-radius:4px;
+                border-top-style:none;
+                border-top-width:0px;
+                box-shadow:rgba(50, 50, 93, 0.11) 0px 4px 6px 0px, rgba(0, 0, 0, 0.08) 0px 1px 3px 0px;
+                box-sizing:border-box;color:rgb(255, 255, 255);
+                cursor:pointer;
+                display:block;
+                float:left;
+                font-family:"Helvetica Neue", Helvetica, sans-serif;
+                font-size:15px;
+                font-stretch:100%;
+                font-style:normal;
+                font-variant-caps:normal;
+                font-variant-east-asian:normal;
+                font-variant-ligatures:normal;
+                font-variant-numeric:normal;
+                font-weight:600;
+                height:35px;
+                letter-spacing:0.375px;
+                line-height:35px;
+                margin-bottom:0px;
+                margin-left:12px;
+                margin-right:0px;
+                margin-top:28px;
+                outline-color:rgb(255, 255, 255);
+                outline-style:none;
+                outline-width:0px;
+                overflow-x:visible;
+                overflow-y:visible;
+                padding-bottom:0px;
+                padding-left:14px;
+                padding-right:14px;
+                padding-top:0px;
+                text-align:center;
+                text-decoration-color:rgb(255, 255, 255);
+                text-decoration-line:none;
+                text-decoration-style:solid;
+                text-indent:0px;
+                text-rendering:auto;
+                text-shadow:none;
+                text-size-adjust:100%;
+                text-transform:none;
+                transition-delay:0s;
+                transition-duration:0.15s;
+                transition-property:all;
+                transition-timing-function:ease;
+                white-space:nowrap;
+                width:150.781px;
+                word-spacing:0px;
+                writing-mode:horizontal-tb;
+                -webkit-appearance:none;
+                -webkit-font-smoothing:antialiased;
+                -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+                -webkit-border-image:none;
 
-<!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
-<script type="text/javascript" src="https://jselements.tap.company/tapdocumentation/public/js/scrolloverflow.min.js"></script>
-<script type="text/javascript" src="https://jselements.tap.company/tapdocumentation/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript" src="https://jselements.tap.company/tapdocumentation/public/js/jquery.fullpage.js"></script>
-    
-</head>
+            }
+        </style>
+    </head>
     <body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-<script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
-        <script>
-//pass your public key from tap's dashboard
-var tap = Tapjsli('pk_test_EtHFV4BuPQokJT6jiROls87Y');
-
-var elements = tap.elements({});
-var style = {
-  base: {
-    color: '#535353',
-    lineHeight: '18px',
-    fontFamily: 'sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': {
-      color: 'rgba(0, 0, 0, 0.26)',
-      fontSize:'15px'
-    }
-  },
-  invalid: {
-    color: 'red'
-  }
-};
-
-var labels = {
-    cardNumber:"Card Number",
-    expirationDate:"MM/YY",
-    cvv:"CVV",
-    cardHolder:"Card Holder Name"
-  };
-
-var paymentOptions = {
-  currencyCode:["KWD","USD","SAR"],
-  labels : labels,
-  TextDirection:'ltr'
-}
-
-var card = elements.create('card', {style: style},paymentOptions);
-
-card.mount('#element-container');
-
-card.addEventListener('change', function(event) {
-  if(event.BIN){
-    console.log(event.BIN)
-  }
-  if(event.loaded){
-    //console.log("UI loaded :"+event.loaded);
-    //console.log("current currency is :"+card.getCurrency())
-  }
-  var displayError = document.getElementById('error-handler');
-  if (event.error) {
-    displayError.textContent = event.error.message;
-  } else {
-    displayError.textContent = '';
-  }
-});
-
-// Handle form submission
-var form = document.getElementById('form-container');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  tap.createToken(card).then(function(result) {
-    //console.log(result);
-    if (result.error) {
-      // Inform the user if there was an error
-      var errorElement = document.getElementById('error-handler');
-      errorElement.textContent = result.error.message;
-    } else {
-      // Send the token to your server
-      var errorElement = document.getElementById('success');
-      errorElement.style.display = "block";
-      var tokenElement = document.getElementById('token');
-      tokenElement.textContent = result.id;
-      //console.log(result);
-      console.log(result.id);
-    }
-  });
-});
-
-</script>
-        
+        <script src="https://secure.gosell.io/js/sdk/tap.min.js"></script>
         <form id="form-container" method="post" action="/charge">
-          <!-- Tap element will be here -->
-          <div id="element-container"></div>  
-          <div id="error-handler" role="alert"></div>
-          <div id="success" style=" display: none;;position: relative;float: left;">
-        Success! Your token is <span id="token"></span>
-      </div>
-          <!-- Tap pay button -->
-          <button id="tap-btn">Submit</button>
-      </form>
-
+            <!-- Tap element will be here -->
+            <div id="element-container"></div>
+            <div id="error-handler" role="alert"></div>
+            <div id="success" style=" display: none;;position: relative;float: left;">
+                Success! Your token is <span id="token"></span>
+            </div>
+            <!-- Tap pay button -->
+            <button id="tap-btn">Submit</button>
+        </form>
     </body>
+
+    <script>
+        //pass your public key from tap's dashboard
+        var tap = Tapjsli('pk_test_EtHFV4BuPQokJT6jiROls87Y');
+
+        var elements = tap.elements({});
+
+        var style = {
+            base: {
+                color: '#535353',
+                lineHeight: '18px',
+                fontFamily: 'sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: 'rgba(0, 0, 0, 0.26)',
+                    fontSize: '15px'
+                }
+            },
+            invalid: {
+                color: 'red'
+            }
+        };
+// input labels/placeholders
+        var labels = {
+            cardNumber: "Card Number",
+            expirationDate: "MM/YY",
+            cvv: "CVV",
+            cardHolder: "Card Holder Name"
+        };
+//payment options
+        var paymentOptions = {
+            currencyCode: ["KWD", "USD", "SAR"],
+            labels: labels,
+            TextDirection: 'ltr'
+        }
+//create element, pass style and payment options
+        var card = elements.create('card', {style: style}, paymentOptions);
+//mount element
+        card.mount('#element-container');
+//card change event listener
+        card.addEventListener('change', function (event) {
+            if (event.loaded) {
+                console.log("UI loaded :" + event.loaded);
+                console.log("current currency is :" + card.getCurrency())
+            }
+            var displayError = document.getElementById('error-handler');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+
+        // Handle form submission
+        var form = document.getElementById('form-container');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            tap.createToken(card).then(function (result) {
+                console.log(result);
+                if (result.error) {
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('error-handler');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+                    var errorElement = document.getElementById('success');
+                    errorElement.style.display = "block";
+                    var tokenElement = document.getElementById('token');
+                    tokenElement.textContent = result.id;
+                    tapTokenHandler(token)
+
+                }
+            });
+        });
+
+
+        function tapTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'tapToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // Submit the form
+            form.submit();
+        }
+
+
+        card.addEventListener('change', function (event) {
+            if (event.BIN) {
+                console.log(event.BIN)
+            }
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+    </script>
 
 </html>
